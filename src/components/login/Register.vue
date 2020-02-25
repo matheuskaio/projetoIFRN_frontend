@@ -12,7 +12,7 @@
         <b-form-group label="Nome:" label-for="name">
           <b-form-input
             id="name"
-            v-model="aluno.nome"
+            v-model="user.nome"
             type="text"
             required
             placeholder="Informe seu nome copleto..."
@@ -26,7 +26,7 @@
         <b-form-group label="CPF:" label-for="cpf">
           <b-form-input
             id="cpf"
-            v-model="aluno.cpf"
+            v-model="user.cpf"
             type="text"
             required
             placeholder="Informe seu CPF.."
@@ -35,7 +35,7 @@
       </b-col>
       <!-- <b-col md="6" sm="12">
         <b-form-group label="Data de Nascimento:" label-for="date">
-          <b-form-input id="date" v-model="aluno.data_nascimento" type="date" required></b-form-input>
+          <b-form-input id="date" v-model="user.data_nascimento" type="date" required></b-form-input>
         </b-form-group>
       </b-col> -->
     </b-row>
@@ -45,14 +45,14 @@
     <b-row>
       <b-col md="6" sm="12">
         <b-form-group label="Tipo de Usuário:" label-for="type">
-          <b-form-select v-model="aluno.type_user" :options="options" id="type"></b-form-select>
+          <b-form-select v-model="user.type_user" :options="options" id="type"></b-form-select>
         </b-form-group>
       </b-col>
       <b-col md="6" sm="12">
         <b-form-group label="Matrícula:" label-for="registration">
           <b-form-input
             id="registration"
-            v-model="aluno.matricula"
+            v-model="user.matricula"
             type="text"
             required
             placeholder="Informe sua matrícula"
@@ -66,7 +66,7 @@
         <b-form-group label="Curso:" label-for="course">
           <b-form-input
             id="course"
-            v-model="aluno.curso"
+            v-model="user.curso"
             type="text"
             placeholder="Informe seu curso, caso seja aluno..."
           ></b-form-input>
@@ -74,7 +74,7 @@
       </b-col>
       <b-col md="6" sm="12">
         <b-form-group label="Currículo Lattes:" label-for="lattes">
-          <b-form-input id="lattes" v-model="aluno.curriculo_latte" type="text"></b-form-input>
+          <b-form-input id="lattes" v-model="user.curriculo_latte" type="text"></b-form-input>
         </b-form-group>
       </b-col>
     </b-row>
@@ -84,7 +84,7 @@
         <b-form-group label="Campus:" label-for="campus">
           <b-form-input
             id="campus"
-            v-model="aluno.campus"
+            v-model="user.campus"
             type="text"
             placeholder="Informe seu campus..."
           ></b-form-input>
@@ -92,7 +92,7 @@
       </b-col>
       <!-- <b-col md="6" sm="12">
         <b-form-group label="Área de Atuação:" label-for="occupation-area ">
-          <b-form-select v-model="aluno.areaAtuacao" :options="areas" id="occupation-area"></b-form-select>
+          <b-form-select v-model="user.areaAtuacao" :options="areas" id="occupation-area"></b-form-select>
         </b-form-group>
       </b-col> -->
     </b-row>
@@ -103,7 +103,7 @@
         <b-form-group label="E-mail:" label-for="email">
           <b-form-input
             id="email"
-            v-model="aluno.email"
+            v-model="user.email"
             type="email"
             placeholder="Informe seu email..."
           ></b-form-input>
@@ -115,7 +115,7 @@
         <b-form-group label="Senha:" label-for="password">
           <b-form-input
             id="password"
-            v-model="aluno.password"
+            v-model="user.password"
             type="password"
             placeholder="Informe sua senha..."
           ></b-form-input>
@@ -126,7 +126,7 @@
     <b-row>
       <b-col md="8" sm="12">
         <b-form-group label="Confirmar Senha:" label-for="password-of-new">
-          <b-form-input id="name" v-model="aluno.name" placeholder="Name..."></b-form-input>
+          <b-form-input id="name" v-model="user.name" placeholder="Name..."></b-form-input>
         </b-form-group>
       </b-col>
     </b-row>
@@ -146,7 +146,7 @@ export default {
   data() {
     return {
       mode: "save",
-      aluno: {},
+      user: {},
       areas: [
         { value: null, text: "Escolha sua área de atuação" },
         { value: "adm", text: "Administração, Economia e Negócios" },
@@ -170,18 +170,18 @@ export default {
   },
   methods: {
     save() {
-      if (this.aluno.type_user === "Professor") {
+      if (this.user.type_user === "Professor") {
         axios
-          .post(`${baseApiUrl}/professor`, JSON.stringify(this.aluno))
+          .post(`${baseApiUrl}/teachers`, this.user)
           .then(() => {
             this.$toasted.global.defaultSuccess();
             this.reset();
           })
           .catch(showError);
       }
-      if (this.aluno.type_user === "Aluno") {
+      if (this.user.type_user === "Aluno") {
         axios
-          .post(`${baseApiUrl}/students`,this.aluno)
+          .post(`${baseApiUrl}/students`,this.user)
           .then(() => {
             this.$toasted.global.defaultSuccess();
             // this.reset();

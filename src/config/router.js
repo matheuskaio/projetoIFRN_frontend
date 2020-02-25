@@ -99,7 +99,7 @@ const routes = [
   {
     name: "auth",
     path: "/auth",
-    component: Auth
+    component: Auth,
   },
   {
     name: "projectByCategory",
@@ -117,8 +117,6 @@ router.beforeEach((to, from, next) => {
   const json = localStorage.getItem(userKey);
   if (to.matched.some(record => record.meta.requiresTeacher)) {
     const user = JSON.parse(json);
-    alert("SSSSSSSS");
-    alert(user.user.type_user);
     user && user.user.type_user === "Professor" ? next() : next({ path: "/" });
   } else {
     next();

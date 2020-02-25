@@ -1,7 +1,7 @@
 <template>
   <div class="data-user">
     <b-form>
-      <input type="hidden" id="teacher-id" />
+      <input type="hidden" id="teacher-id" v-model="user.id" />
 
       <b-row>
         <b-col md="12" sm="12">
@@ -28,7 +28,7 @@
             ></b-form-input>
           </b-form-group>
         </b-col>
-        <b-col md="6" sm="12">
+        <b-col md="6" sm="12" v-if="this.user.tipo==='Teacher'">
           <b-form-group label="Área de Atuação:" label-for="occupation-area">
             <b-form-input
               id="occupation-area"
@@ -114,12 +114,12 @@ export default {
       const usuerId = this.user.id;
       if(this.user.tipo==="Teacher"){
         axios
-        .put(`${baseApiUrl}/teacher/${usuerId}`,this.user,)
+        .put(`${baseApiUrl}/teachers/${usuerId}`,this.user,)
         .then(this.$toasted.global.defaultSuccess(), this.cancelar());
       }
-      if(this.user.tipo){
+      if(this.user.tipo==="Student"){
         axios
-        .put(`${baseApiUrl}/student/${usuerId}`,{nome:this.user.nome},)
+        .put(`${baseApiUrl}/students/${usuerId}`,this.user,)
         .then(this.$toasted.global.defaultSuccess(), this.cancelar());
       }
       

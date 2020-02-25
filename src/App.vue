@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{ 'hide-menu': !isMenuVisible || !user }" v-if="validatingToken === false">
+  <div id="app" :class="{ 'hide-menu': !isMenuVisible || !user }" v-if="validatingToken === false && user">
     <Header
       title="Sistema de Divulgação e Gegenciamento de Projetos Acadêmicos"
       :hideToggle="!user"
@@ -59,7 +59,6 @@ export default {
       this.validatingToken = true;
       const json = localStorage.getItem(userKey);
       const userData = JSON.parse(json);
-      alert(userData.token)
       this.$store.commit("setUser", null);
       if (!userData) {
         this.validatingToken = false;
