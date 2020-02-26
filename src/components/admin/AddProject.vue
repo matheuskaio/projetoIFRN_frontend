@@ -315,10 +315,10 @@
 </template>
 
 <script>
-import { showError } from "../../global";
-import { baseApiUrl } from "../../global";
-import axios from "axios";
 import { VueEditor } from "vue2-editor";
+import { baseApiUrl } from "../../global";
+import { showError } from "../../global";
+import axios from "axios";
 export default {
   name: "AddProject",
   components: { VueEditor },

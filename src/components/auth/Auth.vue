@@ -3,10 +3,11 @@
     <div class="auth-modal">
       <img src="@/assets/login.png" width="100" alt="Logo" />
       <hr />
-      <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
-      <input v-model="user.email" name="usuario" type="text" placeholder="E-mail" />
-      <input v-model="user.password" name="password" type="password" placeholder="Senha" />
-      <router-link :to="{name:'register'}" v-if="user!==anonymous || !user">Registra-se</router-link>
+      <div class="auth-title">Login</div>
+      <input v-model="user.email"  type="email" placeholder="E-mail" />
+      <input v-model="user.password" type="password" placeholder="Senha" />
+      <!-- <router-link :to="{name:'register'}" v-if="user!==user.anonymous ||!user">Registra-se</router-link> -->
+      <a href="/cadastro" v-if="user!==user.anonymous ||!user">Registra-se</a>
       <button @click="sigin">Entrar</button>
     </div>
   </div>
@@ -18,8 +19,10 @@ import axios from "axios";
 
 export default {
   name: "Auth",
-  data: function() {
-    return { showSignup: false, user: {} };
+  data() {
+    return { 
+      user: {} 
+      };
   },
   methods: {
     sigin() {

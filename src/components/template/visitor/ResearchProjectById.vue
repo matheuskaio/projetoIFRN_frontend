@@ -1,5 +1,5 @@
 <template>
-  <div class="project-by-id">
+  <div class="project-by-id" >
     <PageTitle icon="fa fa-file-o" :main="projeto.nome" :sub="projeto.campus" />
 
     <div class="project-content">
@@ -11,7 +11,7 @@
       </div>
       <div class="proj">
         <h4>Orientandos:</h4>
-        <p v-for="aluno in projeto.students" :key="aluno">{{aluno.nome}}</p>
+        <p v-for="aluno in projeto.students" :key="aluno.id">{{aluno.nome}}</p>
       </div>
       <!-- <div class="proj" v-for="arq in projeto.arquivos" :key="arq">
         <img :src="arq" alt />
@@ -72,7 +72,7 @@
         <!-- <p>{{projeto.referancia}}</p> -->
       </div>
     </div>
-    <div
+    <!-- <div
       class="fb-comments"
       :data-href="url+this.$route.params.id"
       data-width
@@ -88,7 +88,7 @@
       data-action="like"
       data-size="large"
       data-share="false"
-    ></div>
+    ></div> -->
   </div>
 </template>
 
@@ -103,70 +103,6 @@ export default {
   data: function() {
     return {
       projeto: {},
-      // url: "http://localhost:8080/projetos/"
-      // projeto: {
-      //   id: 2,
-      //   nome: "Projeto 33XXX",
-      //   tipo: "Tipo 2",
-      //   finalizado: false,
-      //   campus: "IFRN - NC",
-      //   dataInicio: {
-      //     date: "2019-10-10 00:00:00.000000",
-      //     timezone_type: 3,
-      //     timezone: "America Sao_Paulo"
-      //   },
-      //   dataTermino: {
-      //     date: "2020-06-12 00:00:00.000000",
-      //     timezone_type: 3,
-      //     timezone: "America Sao_Paulo"
-      //   },
-      //   areaConhecimento: "Area de Conhecimento 2",
-      //   resumo: "Vai da merdamerdamerdamerdamerdamerdamerd merdamerdamerdamerdamerdamerdamerdame rdamerdamerdamerdamerdamerdamerdamerdamerdamerd amerdamerdamerdamerda merdamerdamerdamerdamerdamerdamerdamerdamerdamerdamerdam erdamerdamerdaa ",
-      //   introducao: "Introdução 2",
-      //   justificativa: "Justificativa 2",
-      //   fundamentacaoTeorica: "Fundamentação Teórica 2",
-      //   objetivoGeral: "Objetivos gerais",
-      //   metodologiaExecucaoProjeto: "Metodologia 2",
-      //   acompanhamentoAvaliacaoProjeto: "Acompanhamento 2",
-      //   resultadoEsperado: "Vai da certo",
-      //   referancia: "ref45955",
-      //   professor: [
-      //     {
-      //       id: 4,
-      //       nome: "Professor33 ",
-      //       cpf: "111222332",
-      //       matricula: "20156655",
-      //       areaAtuacao: "A1",
-      //       curriculoLatte: "cur1",
-      //       usuario: "professor34@gmail.com"
-      //     },
-      //     {
-      //       id: 4,
-      //       nome: "Professor24 ",
-      //       cpf: "111222332",
-      //       matricula: "20156655",
-      //       areaAtuacao: "A1",
-      //       curriculoLatte: "cur1",
-      //       usuario: "professor34@gmail.com"
-      //     },
-      //   ],
-      //   alunos: [
-      //     {
-      //       id: 3,
-      //       nome: "Aluno 122",
-      //       cpf: "111222333",
-      //       matricula: "20151133534",
-      //       curso: "TADS",
-      //       curriculoLatte: "cur3"
-      //     }
-      //   ],
-      //   arquivos: [img1],
-      //   resultadoAlcancado: "Nunca funciona de primeria",
-      //   resultadoDisseminacaoEsperado: "Eu falei que ia da merda",
-      //   observacao: "Observações",
-      //   relevancias: {},
-      //   sugestao: false
-      // }
     };
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <div class="carousel-visitor">
-    <carousel-3d :count="projetos.length">
-      <slide v-for="projeto in projetos.slice(0,6)" :index="projeto.id" :key="projeto.id">
+    <carousel-3d ref="meu-carrousel" :count="projetos.length">
+      <slide v-for="(projeto, i) in projetos" :index="i" :key="projeto.id">
         <router-link :to="{name: 'researchProjectById', params:{id:projeto.id}}">
           <h4>{{projeto.nome}}</h4>
         </router-link>

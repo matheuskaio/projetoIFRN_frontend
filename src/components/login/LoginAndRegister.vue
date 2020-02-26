@@ -11,7 +11,7 @@
             </div>
             <hr>
             <input v-if="showSignup" type="email" placeholder="E-mail">
-            <input v-else type="email" placeholder="E-mail">
+            <input v-else v-model="user.email" type="email" placeholder="E-mail">
             <input v-if="!showSignup" type="password" placeholder="Senha">
 
             <button v-if="showSignup">Cadastrar-se</button>
@@ -32,6 +32,7 @@ export default {
     data(){
         return{
             showSignup: false,
+            user:{}
         }
     }
 }

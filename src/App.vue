@@ -49,7 +49,7 @@ export default {
     Loading
   },
   computed: mapState(["isMenuVisible", "user"]),
-  data: function() {
+  data() {
     return {
       validatingToken: false
     };
@@ -60,11 +60,11 @@ export default {
       const json = localStorage.getItem(userKey);
       const userData = JSON.parse(json);
       this.$store.commit("setUser", null);
-      if (!userData) {
-        this.validatingToken = false;
-        this.$router.push({ name: "auth" });
-        return;
-      }
+      // if (!userData) {
+      //   this.validatingToken = false;
+      //   this.$router.push({ name: "auth" });
+      //   return;
+      // }
       // const res = await axios.post(`${baseApiUrl}/validationToken`, {
       const res = await axios.get(`${baseApiUrl}/sessions`, {
         params:{userData}
