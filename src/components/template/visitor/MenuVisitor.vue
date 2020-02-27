@@ -2,12 +2,12 @@
   <div class="menuVisitor">
     <b-navbar class="menuVisitor" type="info">
       <b-navbar-nav>
-        <b-nav-item to="/" class="item">Início</b-nav-item>
-        <b-nav-item to="/projetos-de-pesquisa">Projetos de Pesquisa</b-nav-item>
-        <b-nav-item to="/projetos-de-extensao">Projetos de Extensão</b-nav-item>
-        <b-nav-item to="/tccs">TCC's</b-nav-item>
-        <b-nav-item to="/sobre">Sobre</b-nav-item>
-        <b-nav-item to="/auth">Login</b-nav-item>
+        <b-nav-item class="item"><router-link class="barra-link" to="/">Início</router-link></b-nav-item>
+        <b-nav-item><router-link class="barra-link" to="/projetos-de-pesquisa">Projetos de Pesquisa</router-link></b-nav-item>
+        <b-nav-item><router-link class="barra-link" to="/projetos-de-extensao">Projetos de Extensão</router-link></b-nav-item>
+        <b-nav-item><router-link class="barra-link" to="/tccs"> TCC's</router-link></b-nav-item>
+        <b-nav-item><router-link class="barra-link" to="/sobre">Sobre</router-link></b-nav-item>
+        <b-nav-item><router-link class="barra-link" to="/auth">Login</router-link></b-nav-item>
       </b-navbar-nav>
     </b-navbar>
   </div>
@@ -27,6 +27,13 @@ export default {
 <style >
 .navbar {
   height: 100%;
+}
+.barra-link{
+  margin-left: 0
+}
+.barra-link:hover{
+  text-decoration: none;
+  background: none
 }
 .menuVisitor {
   grid-area: menuVisitor;
